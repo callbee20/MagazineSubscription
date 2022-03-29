@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert a new subscriber</title>
+</head>
+<body>
+<form th:object= "${newSubscriber}" th:action="@{/update/{id}(id=${newSubscriber.id})}" method= 'POST'>
+Name: <input name="name" size="20" th:field="*{name}"> <br />
+Phone Number: <input name="contactNumber" size= "20" th:field="*{contactNumber}"><br />
+Subscription Fee: <input name="subscriptionFee" size="20" th:field="*{subscriptionFee}"><br />
+Street: <input name="address.street" size= "20" th:field="*{address.street}"><br />
+City: <input name="address.city" size= "20" th:field="*{address.city}"><br />
+State: <input name="address.state" size= "20" th:field="*{address.state}"><br />
+Zipcode: <input name="address.zipCode" size= "20" th:field="*{address.zipCode}"><br />
+<input name= "submit" type="submit" value="submit" />
+</form>
+<a href= "viewALl">View all subscribers</a>
+</body>
+</html>

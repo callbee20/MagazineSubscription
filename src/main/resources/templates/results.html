@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View All Subscribers</title>
+</head>
+<body>
+<form>
+<table>
+<tr th:each="currentSubscriber : ${subscribers}" >
+<td th:text= "${currentSubscriber.id}" />
+	<td th:text= "${currentSubscriber.name}" />
+	<td th:text= "${currentSubscriber.contactNumber}" />
+	<td th:text= "${currentSubscriber.subscriptionFee}" />
+	<td th:text= "${currentSubscriber.address.street}" />
+	<td th:text= "${currentSubscriber.address.city}" />
+	<td th:text= "${currentSubscriber.address.state}" />
+	<td th:text= "${currentSubscriber.address.zipCode}" />
+<td><a th:href="@{/edit/{id}(id=${currentSubscriber.id})}">Edit</a></td>
+<td><a th:href="@{/delete/{id}(id=${currentSubscriber.id})}">Delete</a></td>
+</tr>
+</table>
+</form>
+<a href= "../inputSubscriber">Add a new Subscriber</a>
+</body>
+</html>
