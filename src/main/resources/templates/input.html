@@ -3,9 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert a new subscriber</title>
+<script type = "text/javascript">
+	function validate(){
+		if(document.forms["MyForm"]["name"].value == ""){
+			alert("You must enter a name!");
+			form.name.focus();
+			return false;
+		}
+		
+		if(document.forms["MyForm"]["subscriptionFee"].value <= 0){
+			alert("You can't have a free or negative value!");
+			form.subscriptionFee.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
 </head>
 <body>
-<form th:object= "${newSubscriber}" th:action="@{/update/{id}(id=${newSubscriber.id})}" method= 'POST'>
+<form name="MyForm" th:object= "${newSubscriber}" th:action="@{/update/{id}(id=${newSubscriber.id})}" method= 'POST' onsubmit= "return validate()">
 Name: <input name="name" size="20" th:field="*{name}"> <br />
 Phone Number: <input name="contactNumber" size= "20" th:field="*{contactNumber}"><br />
 Subscription Fee: <input name="subscriptionFee" size="20" th:field="*{subscriptionFee}"><br />
